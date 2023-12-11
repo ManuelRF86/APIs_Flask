@@ -50,15 +50,15 @@ def predict():
         return "The prediction of sales investing that amount of money in TV, radio and newspaper is: " + str(round(prediction[0],2)) + 'k €'
     
 @app.route('/v2/ingest_data', methods=['POST'])
-def add_news():
+def ingest_data():
 
     data = request.get_json()
 
-    # Conectar a la base de datos
+
     conn = sqlite3.connect('data/advertising_database.db')
     cursor = conn.cursor()
 
-    # Utiliza parámetros de marcadores de posición (?) para evitar SQL injection
+
     cursor.execute("INSERT INTO advertising_database (tv, radio, newpaper, sales) VALUES (?, ?, ?, ?)",
                        (data['tv'], data['radio'], data['newpaper'], data['sales']))
 

@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  web:
+    image: manuelreina/mi-primera-app-model:1.0
+    ports: "5000:5000"
+  environment: FLASK_ENV=development
+command: python app_model.py
